@@ -22,6 +22,12 @@ public class MahjongProbability {
     private static int[] mahjong = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
             18, 19, 20, 21, 22, 23, 24, 25, 26, 27};
 
+    private static int million = 1000000;
+
+    private static int hundred = 100;
+
+
+
     /**
      * @param aa
      * @return int[]
@@ -65,7 +71,7 @@ public class MahjongProbability {
 
 
     /**
-     * @param nums  @param n
+     * @param nums @param n
      * @return void
      * @Description 随机选牌
      * @author chensihua
@@ -92,13 +98,13 @@ public class MahjongProbability {
         nums[n] = nums[m];
         nums[m] = temp;
     }
-    
-    /** 
+
+    /**
+     * @param hand
+     * @return boolean
      * @Description 查找有碰的数组，有碰返回true 无碰返回false
      * @author chensihua
-     * @param hand
      * @createTime 12:53 2021/10/13
-     * @return boolean
      * @version 1.0.0
      */
     public static boolean find(int[] hand) {
@@ -113,16 +119,16 @@ public class MahjongProbability {
         return false;
     }
 
-    /** 
+    /**
+     * @param niu @param i
+     * @return int
      * @Description 计数
      * @author chensihua
-     * @param niu @param i
      * @createTime 12:53 2021/10/13
-     * @return int
      * @version 1.0.0
      */
-    public static int containsDuplicate(boolean niu,int i){
-        if (niu){
+    public static int containsDuplicate(boolean niu, int i) {
+        if (niu) {
             i++;
         }
         return i;
@@ -130,29 +136,36 @@ public class MahjongProbability {
 
 
     public static void main(String[] args) {
+        //获取开始时间
+        long startTime = System.currentTimeMillis();
+
         int a = 0;
-        for (int test = 0; test < 1000000; test++) {
+        // 循环100万次
+        for (int test = 0; test < million; test++) {
             int[] nums = getListString(mahjong);
             randSelect(nums, 9);
             for (int i = 0; i < 9; i++) {
                 System.out.print(nums[i] + ",");
             }
-            int[] hand = Arrays.copyOfRange(nums, 0, 8);;
+            int[] hand = Arrays.copyOfRange(nums, 0, 8);
+            ;
             boolean niu = find(hand);
             System.out.println(niu);
-            a= containsDuplicate(niu,a);
+            a = containsDuplicate(niu, a);
         }
-        System.out.println("最终次数" +a);
+        System.out.println("最终次数" + a);
 
         double d1 = a * 1.0;
-        double d2 = 1000000 * 1.0;
-        // 设置保留几位小数， “.”后面几个零就保留几位小数，这里设置保留四位小数
+        double d2 = million * 1.0;
+        // 计算概率 设置保留几位小数， “.”后面几个零就保留几位小数，这里设置保留四位小数
         DecimalFormat decimalFormat = new DecimalFormat("##.0000%");
         String format = decimalFormat.format(d1 / d2);
-        System.out.println("概率为：" + format );
+        System.out.println("概率为：" + format);
 
-
-
+        //获取结束时间
+        long endTime = System.currentTimeMillis();
+        //输出程序运行时间
+        System.out.println("程序运行时间：" + (endTime - startTime) + "ms");
 
 
     }
