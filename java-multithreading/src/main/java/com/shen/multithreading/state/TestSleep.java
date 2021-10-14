@@ -1,17 +1,16 @@
-package com.shen.multithreading.basic;
+package com.shen.multithreading.state;
+
+import com.shen.multithreading.basic.TestThread3;
 
 /**
  * @author chensihua
  * @version 1.0.0
- * @ClassName TestThread3.java
+ * @ClassName TestSleep.java
  * @email theoshen@foxmail.com
- * @Description 模拟获取资格
- * @createTime 2021年10月11日 11:42:00
+ * @Description 模拟网络延时，放大问题的发生性
+ * @createTime 2021年10月14日 16:27:00
  */
-
-
-public class TestThread3 implements Runnable {
-
+public class TestSleep implements Runnable{
     private int qualification_num = 32;
 
     @Override
@@ -21,6 +20,7 @@ public class TestThread3 implements Runnable {
                 break;
             }
             try {
+                // 模拟延时
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -35,7 +35,7 @@ public class TestThread3 implements Runnable {
      * 发现问题：多个线程操作同一个资源，线程不安全，数据紊乱。
      */
     public static void main(String[] args) {
-        TestThread3 num = new TestThread3();
+        TestSleep num = new TestSleep();
 
         new Thread(num, "皇马").start();
         new Thread(num, "巴萨").start();
