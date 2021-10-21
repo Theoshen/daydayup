@@ -21,6 +21,7 @@ public class TestDaemon {
         // 上帝守护线程启动
         thread.start();
 
+        
         // 用户线程启动
         new Thread(you).start();
 
