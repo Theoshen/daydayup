@@ -3,6 +3,7 @@ package com.shen.juc.forkjoin;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
+import java.util.stream.LongStream;
 
 /**
  * @author chensihua
@@ -15,7 +16,8 @@ import java.util.concurrent.ForkJoinTask;
 public class Test {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 //        test1(); // 7084
-        test2();  //7420
+//        test2();  //7420
+        test3();
     }
 
     public static void test1() {
@@ -35,7 +37,7 @@ public class Test {
         long start = System.currentTimeMillis();
 
         ForkJoinPool forkJoinPool = new ForkJoinPool();
-        ForkJoinDemo forkJoinDemo = new ForkJoinDemo(0L,10_0000_0000L);
+        ForkJoinDemo forkJoinDemo = new ForkJoinDemo(0L, 10_0000_0000L);
         ForkJoinTask<Long> submit = forkJoinPool.submit(forkJoinDemo);
         Long sum = submit.get();
 
@@ -46,7 +48,8 @@ public class Test {
 
     public static void test3() {
         long start = System.currentTimeMillis();
+        long sum = LongStream.rangeClosed(0L, 10_0000_0000L).parallel().reduce(0, Long::sum);
         long end = System.currentTimeMillis();
-        System.out.println("sum =" + "用时" + (end - start));
+        System.out.println("sum =" + sum + "用时" + (end - start));
     }
 }
