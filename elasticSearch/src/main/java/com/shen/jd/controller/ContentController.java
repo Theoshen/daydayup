@@ -1,6 +1,6 @@
 package com.shen.jd.controller;
 
-import com.shen.service.ContentService;
+import com.shen.jd.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

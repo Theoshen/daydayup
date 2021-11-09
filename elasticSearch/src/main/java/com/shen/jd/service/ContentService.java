@@ -1,8 +1,8 @@
 package com.shen.jd.service;
 
 import com.alibaba.fastjson.JSON;
-import com.shen.entity.Content;
-import com.shen.utils.HtmlParseUtil;
+import com.shen.jd.entity.Content;
+import com.shen.jd.utils.HtmlParseUtil;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequest;

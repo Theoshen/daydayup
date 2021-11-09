@@ -1,6 +1,6 @@
 package com.shen.jd.utils;
 
-import com.shen.entity.Content;
+import com.shen.jd.entity.Content;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
