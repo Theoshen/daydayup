@@ -13,7 +13,6 @@
         <module>java-designPattern</module>
         <module>java-multithreading</module>
         <module>algorithms</module>
-        <module>elasticSearch</module>
     </modules>
 
 
