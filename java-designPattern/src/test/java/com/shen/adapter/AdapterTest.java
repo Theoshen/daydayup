@@ -35,7 +35,7 @@ public class AdapterTest {
         link01.put("bizId", "number");
         link01.put("bizTime", "accountDate");
         link01.put("desc", "desc");
-        RebateInfo rebateInfo01 = MQAdapter.filter(create_account.toString(),
+        RebateInfo rebateInfo01 = MQAdapter.filter(JSON.toJSONString(create_account),
                 link01);
         System.out.println("mq.create_account(适配前)" +
                 create_account.toString());
@@ -51,7 +51,7 @@ public class AdapterTest {
         link02.put("userId", "uid");
         link02.put("bizId", "orderId");
         link02.put("bizTime", "createOrderTime");
-        RebateInfo rebateInfo02 = MQAdapter.filter(orderMq.toString(),
+        RebateInfo rebateInfo02 = MQAdapter.filter(JSON.toJSONString(orderMq),
                 link02);
         System.out.println("mq.orderMq(适配前)" + orderMq.toString());
         System.out.println("mq.orderMq(适配后)" +
