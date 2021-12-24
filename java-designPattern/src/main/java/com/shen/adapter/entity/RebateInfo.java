@@ -1,5 +1,7 @@
 package com.shen.adapter.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,7 +13,7 @@ import java.util.Date;
  * @Description TODO
  * @createTime 2021年12月17日 16:19:00
  */
-
+@Data
 public class RebateInfo implements Serializable {
 
     private static final long serialVersionUID = -8735570684620676246L;
@@ -26,41 +28,10 @@ public class RebateInfo implements Serializable {
     /**
      * @Description 业务时间
      */
-    private Date bizTime;
+    private String bizTime;
     /**
      * @Description 业务描述
      */
     private String desc;
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getBizId() {
-        return bizId;
-    }
-
-    public void setBizId(String bizId) {
-        this.bizId = bizId;
-    }
-
-    public Date getBizTime() {
-        return bizTime;
-    }
-
-    public void setBizTime(Date bizTime) {
-        this.bizTime = bizTime;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
 }

@@ -29,7 +29,7 @@ public class MQAdapter {
             IllegalAccessException {
         RebateInfo rebateInfo = new RebateInfo();
         for(String key : link.keySet()){
-            Object val = obj.get(link.keySet());
+            Object val = obj.get(link.get(key));
             RebateInfo.class.getMethod("set" + key.substring(0,1).toUpperCase() + key.substring(1),String.class).invoke(rebateInfo,
                     val.toString());
         }

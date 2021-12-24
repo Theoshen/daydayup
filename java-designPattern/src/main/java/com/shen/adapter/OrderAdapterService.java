@@ -8,5 +8,6 @@ package com.shen.adapter;
  * @Description TODO
  * @createTime 2021年12月17日 16:19:00
  */
-public class OrderAdapterService {
+public interface OrderAdapterService {
+    boolean isFirst(String uId);
 }
