@@ -35,10 +35,11 @@ public class MahjongProbability extends RecursiveTask<Integer> {
     private int MILLION;
     private int START;
 
-    public MahjongProbability(int begin,int end){
+    public MahjongProbability(int begin, int end) {
         this.START = begin;
         this.MILLION = end;
     }
+
     /**
      * @param aa
      * @return int[]
@@ -145,14 +146,14 @@ public class MahjongProbability extends RecursiveTask<Integer> {
         return i;
     }
 
-    public static boolean loop(){
-            int[] nums = getListString(mahjong);
-            randSelect(nums, 9);
-            for (int i = 0; i < 9; i++) {
-                System.out.print(nums[i] + ",");
-            }
-            int[] hand = Arrays.copyOfRange(nums, 0, 8);
-            boolean niu = find(hand);
+    public static boolean loop() {
+        int[] nums = getListString(mahjong);
+        randSelect(nums, 9);
+        for (int i = 0; i < 9; i++) {
+            System.out.print(nums[i] + ",");
+        }
+        int[] hand = Arrays.copyOfRange(nums, 0, 8);
+        boolean niu = find(hand);
         System.out.println(niu);
         return niu;
     }
@@ -194,18 +195,18 @@ public class MahjongProbability extends RecursiveTask<Integer> {
 
     @Override
     protected Integer compute() {
-        if ( (MILLION - START) < temp){
+        if ((MILLION - START) < temp) {
             int a = 0;
-            for (int begin = START; begin < MILLION; begin ++){
+            for (int begin = START; begin < MILLION; begin++) {
                 boolean yes = loop();
                 a = containsDuplicate(yes, a);
             }
             return a;
-        }else {
+        } else {
             int middle = (MILLION + START) / 2; // 中间值
             MahjongProbability task1 = new MahjongProbability(START, middle);
             task1.fork(); // 拆分任务，把任务压入线程队列
-            MahjongProbability task2 = new MahjongProbability(middle+1, MILLION);
+            MahjongProbability task2 = new MahjongProbability(middle + 1, MILLION);
             task2.fork(); // 拆分任务，把任务压入线程队列
             return task1.join() + task2.join();
         }
