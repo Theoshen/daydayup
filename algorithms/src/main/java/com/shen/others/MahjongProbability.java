@@ -154,7 +154,6 @@ public class MahjongProbability extends RecursiveTask<Integer> {
         }
         int[] hand = Arrays.copyOfRange(nums, 0, 8);
         boolean niu = find(hand);
-        System.out.println(niu);
         return niu;
     }
 
@@ -167,13 +166,9 @@ public class MahjongProbability extends RecursiveTask<Integer> {
         for (int test = 0; test < million; test++) {
             int[] nums = getListString(mahjong);
             randSelect(nums, 9);
-            for (int i = 0; i < 9; i++) {
-                System.out.print(nums[i] + ",");
-            }
             int[] hand = Arrays.copyOfRange(nums, 0, 8);
             ;
             boolean niu = find(hand);
-            System.out.println(niu);
             a = containsDuplicate(niu, a);
         }
         System.out.println("最终次数" + a);
